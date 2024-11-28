@@ -43,18 +43,13 @@ export const ServerStatusFrame = (props: any) => {
     <>
       <StyledConnectionAside>
         <span>
-          <H3>Connection status</H3>
-          This is your current connection information.
+          <H3>连接情况</H3>
+          这是您的连接信息
         </span>
       </StyledConnectionAside>
       <StyledConnectionBodyContainer>
         {(!isConnected || !activeConnectionData) && (
-          <StyledConnectionBody>
-            You are currently not connected to Neo4j.
-            <br />
-            Execute <ClickToCode>:server connect</ClickToCode> and enter your
-            credentials to connect.
-          </StyledConnectionBody>
+          <StyledConnectionBody>您还未连接到数据库</StyledConnectionBody>
         )}
         {isConnected &&
           activeConnectionData &&
@@ -70,7 +65,7 @@ export const ServerStatusFrame = (props: any) => {
           activeConnectionData &&
           !activeConnectionData.authEnabled && (
             <StyledConnectionBody>
-              You have a working connection and server auth is disabled.
+              您有一个正在进行中的连接，并且服务器验证已禁用
             </StyledConnectionBody>
           )}
       </StyledConnectionBodyContainer>

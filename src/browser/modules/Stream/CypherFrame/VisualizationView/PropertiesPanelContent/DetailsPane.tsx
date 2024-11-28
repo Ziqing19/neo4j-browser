@@ -56,17 +56,19 @@ export function DetailsPane({
   const handleMorePropertiesClick = (numMore: number) => {
     setMaxPropertiesCount(maxPropertiesCount + numMore)
   }
+  const type: string =
+    upperFirst(vizItem.type) === 'Node' ? '节点属性' : '关系边属性'
 
   return (
     <PaneWrapper>
       <PaneHeader>
         <PaneTitle>
-          <span>{`${upperFirst(vizItem.type)} properties`}</span>
+          <span>{type}</span>
           <ClipboardCopier
             textToCopy={allItemProperties
               .map(prop => `${prop.key}: ${prop.value}`)
               .join('\n')}
-            titleText="Copy all properties to clipboard"
+            titleText="拷贝所有属性到剪贴板"
             iconSize={12}
           />
         </PaneTitle>

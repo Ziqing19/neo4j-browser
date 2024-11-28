@@ -48,13 +48,13 @@ export const WheelZoomInfoOverlay = ({
           <StyledZoomInfoIconContainer>
             <InfoIcon />
           </StyledZoomInfoIconContainer>
-          <StyledZoomInfoText>{`Use ${getModKeyString()} + scroll to zoom`}</StyledZoomInfoText>
+          <StyledZoomInfoText>{`使用 ${getModKeyString()} + 滚轮来缩放`}</StyledZoomInfoText>
         </StyledZoomInfoTextContainer>
         <StyledZoomInfoOverlayDoNotDisplayButton
           data-testid="wheelZoomInfoCheckbox"
           onClick={handleDoNotDisplayAgainClick}
         >
-          {"Don't show again"}
+          {'不再显示'}
         </StyledZoomInfoOverlayDoNotDisplayButton>
       </StyledZoomInfo>
     </StyledZoomInfoOverlay>

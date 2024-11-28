@@ -173,7 +173,7 @@ const Sidebar = ({
       },
       content: AboutDrawer
     }
-  ].filter(({ name }) => loadSync || name !== 'Sync')
+  ].filter(({ name }) => loadSync || name !== 'Sync') // TODO
 
   return (
     <TabNavigation

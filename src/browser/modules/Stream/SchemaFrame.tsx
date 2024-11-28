@@ -76,13 +76,13 @@ const Indexes = ({ indexes, neo4jVersion }: IndexesProps) => {
   ])
 
   const header = [
-    'Index Name',
-    'Type',
-    'Uniqueness',
-    'EntityType',
-    'LabelsOrTypes',
-    'Properties',
-    'State'
+    '索引名',
+    '类型',
+    '独特性',
+    '实体类型',
+    '标签或类型',
+    '属性',
+    '状态'
   ]
 
   return (
@@ -107,13 +107,7 @@ const Constraints = ({
       replace(constraint.description, 'CONSTRAINT', '')
     ])
   } else {
-    header = [
-      'Constraint Name',
-      'Type',
-      'EntityType',
-      'LabelsOrTypes',
-      'Properties'
-    ]
+    header = ['约束名', '类型', '实体类型', '标签或类型', '属性']
 
     rows = constraints.map((constraint: any) => [
       constraint.name,

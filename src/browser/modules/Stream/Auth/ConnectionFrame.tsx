@@ -58,15 +58,13 @@ class ConnectionFrame extends Component<BaseFrameProps, ConnectionFrameState> {
             <StyledConnectionAside>
               {this.state.success ? (
                 <>
-                  <H3>Connected to Neo4j</H3>
-                  <Lead>Nice to meet you.</Lead>
+                  <H3>电信研究院推荐系统</H3>
+                  <Lead>您已连接到数据库</Lead>
                 </>
               ) : (
                 <>
-                  <H3>Connect to Neo4j</H3>
-                  <Lead>
-                    Database access might require an authenticated connection
-                  </Lead>
+                  <H3>电信研究院推荐系统</H3>
+                  <Lead>点击连接到数据库并开始使用</Lead>
                 </>
               )}
             </StyledConnectionAside>

@@ -177,7 +177,7 @@ export function App(props: any) {
   } = props
 
   useEffect(() => {
-    document.title = titleString
+    // document.title = titleString
   }, [titleString])
 
   const wrapperClassNames = codeFontLigatures ? '' : 'disable-font-ligatures'

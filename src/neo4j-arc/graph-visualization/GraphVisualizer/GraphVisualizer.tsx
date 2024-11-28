@@ -135,7 +135,7 @@ export class GraphVisualizer extends Component<
     const selectedItem: VizItem = nodeLimitHit
       ? {
           type: 'status-item',
-          item: `Not all return nodes are being displayed due to Initial Node Display setting. Only first ${this.props.nodes.length} nodes are displayed.`
+          item: `由于初始节点显示设置，并非所有返回的节点都被显示。仅显示前 ${this.props.nodes.length} 个节点。`
         }
       : {
           type: 'canvas',
@@ -184,7 +184,7 @@ export class GraphVisualizer extends Component<
             this.setState({
               selectedItem: {
                 type: 'status-item',
-                item: `Rendering was limited to ${this.props.maxNeighbours} of the node's total ${allNeighboursCount} neighbours due to browser config maxNeighbours.`
+                item: `渲染被限制在节点总共 ${allNeighboursCount} 个邻居中的 ${this.props.maxNeighbours} 个，这是由于浏览器配置中的 maxNeighbours 设置。`
               }
             })
           }

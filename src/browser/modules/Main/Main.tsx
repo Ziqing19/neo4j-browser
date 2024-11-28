@@ -71,7 +71,9 @@ const Main = React.memo(function Main(props: MainProps) {
 
   useEffect(() => {
     showUdcConsentBanner && incrementConsentBannerShownCount()
-  }, [showUdcConsentBanner /* missing function from dep array but including it causes loop */])
+  }, [
+    showUdcConsentBanner /* missing function from dep array but including it causes loop */
+  ])
 
   return (
     <StyledMain data-testid="main">
@@ -81,20 +83,20 @@ const Main = React.memo(function Main(props: MainProps) {
       {showUdcConsentBanner && (
         <UdcConsentBanner>
           <span>
-            To help make Neo4j Browser better we collect information on product
-            usage. Review your{' '}
+            为了帮助改进Neo4j浏览器，我们收集产品使用信息。您可以随时查看您的
             <UnderlineClickable onClick={openSettingsDrawer}>
-              settings
-            </UnderlineClickable>{' '}
-            at any time.
+              设置
+            </UnderlineClickable>
+            。
           </span>
           <DismissBanner onClick={dismissConsentBanner} />
         </UdcConsentBanner>
       )}
       {useDb && isDatabaseUnavailable && (
         <ErrorBanner>
-          {`Database '${useDb}' is unavailable. Run `}
-          <AutoExecButton cmd="sysinfo" /> for more info.
+          {`数据库 '${useDb}' 不可用，运行`}
+          <AutoExecButton cmd="sysinfo" />
+          获取更多信息
         </ErrorBanner>
       )}
       {errorMessage && (
@@ -102,49 +104,40 @@ const Main = React.memo(function Main(props: MainProps) {
       )}
       {connectionState === DISCONNECTED_STATE && (
         <NotAuthedBanner data-testid="disconnectedBanner">
-          Database access not available. Please use&nbsp;
-          <AutoExecButton
-            cmd="server connect"
-            data-testid="disconnectedBannerCode"
-          />
-          {` to establish connection. There's a graph waiting for you.`}
+          尚未连接到数据库
         </NotAuthedBanner>
       )}
       {connectionState === PENDING_STATE && !past10Sec && (
         <WarningBanner data-testid="reconnectBanner">
-          Connection to server lost. Reconnecting...
+          连接到服务器丢失。正在重新连接...
         </WarningBanner>
       )}
       {connectionState === CONNECTING_STATE && past5Sec && !past10Sec && (
-        <NotAuthedBanner>Still connecting...</NotAuthedBanner>
+        <NotAuthedBanner>仍在连接中...</NotAuthedBanner>
       )}
-      {past10Sec && (
-        <WarningBanner>
-          Server is taking a long time to respond...
-        </WarningBanner>
-      )}
+      {past10Sec && <WarningBanner>服务器响应时间过长...</WarningBanner>}
 
       {trialStatus.status === 'expired' && (
         <ErrorBanner style={{ overflow: 'auto' }}>
-          Thank you for installing Neo4j. This is a time limited trial, and the{' '}
-          {trialStatus.totalDays} days have expired. Please contact us at{' '}
+          感谢您安装Neo4j。这是一个有时间限制的试用版，
+          {trialStatus.totalDays}
+          天的试用期已过期。请访问
           <a href="https://neo4j.com/contact-us/">
             https://neo4j.com/contact-us/
-          </a>{' '}
-          to continue using the software. Use of this Software without a proper
-          commercial or evaluation license with Neo4j, Inc. or its affiliates is
-          prohibited.
+          </a>
+          以继续使用该软件。 未经Neo4j,
+          Inc.或其关联公司适当的商业或评估许可证使用此软件是被禁止的。
         </ErrorBanner>
       )}
       {trialStatus.status === 'eval' && showRemainingTrialBanner && (
         <WarningBanner style={{ overflow: 'auto' }}>
-          Thank you for installing Neo4j. This is a time limited trial. You have{' '}
-          {trialStatus.daysRemaining} days remaining out of{' '}
-          {trialStatus.totalDays} days. Please contact us at{' '}
+          感谢您安装Neo4j。这是一个有时间限制的试用版。您还有
+          {trialStatus.daysRemaining}天的试用期，总共
+          {trialStatus.totalDays}
+          天。如果您需要更多时间，请通过以下链接联系我们：
           <a href="https://neo4j.com/contact-us/">
             https://neo4j.com/contact-us/
-          </a>{' '}
-          if you require more time.
+          </a>
           <div
             style={{
               position: 'absolute',
@@ -159,14 +152,12 @@ const Main = React.memo(function Main(props: MainProps) {
 
       {trialStatus.status === 'unaccepted' && showRemainingTrialBanner && (
         <WarningBanner style={{ overflow: 'auto' }}>
-          A Neo4j license has not been accepted. To accept the commercial
-          license agreement, run neo4j-admin server license --accept-commercial.
-          To accept the terms of the evaluation agreement, run neo4j-admin
-          server license --accept-evaluation. (c) Neo4j Sweden AB. All Rights
-          Reserved. Use of this Software without a proper commercial license, or
-          evaluation license with Neo4j, Inc. or its affiliates is prohibited.
-          Neo4j has the right to terminate your usage if you are not compliant.
-          Please contact us about licensing via{' '}
+          Neo4j许可证尚未被接受。要接受商业许可协议，请运行neo4j-admin server
+          license --accept-commercial。 要接受评估协议的条款，请运行neo4j-admin
+          server license --accept-evaluation。(C) Neo4j Sweden AB。版权所有。
+          未经Neo4j,
+          Inc.或其关联公司适当的商业许可证或评估许可证使用此软件是被禁止的。
+          如果您不遵守规定，Neo4j有权终止您的使用权。如需了解有关许可证的信息，请通过以下链接联系我们：
           <a href="https://neo4j.com/contact-us/">
             https://neo4j.com/contact-us/
           </a>

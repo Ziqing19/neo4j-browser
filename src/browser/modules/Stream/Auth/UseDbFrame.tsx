@@ -40,7 +40,7 @@ const UseDbFrame = (props: BaseFrameProps) => {
         <span>
           <React.Fragment>
             <H3>Use database</H3>
-            You have updated what database to use in the Neo4j dbms.
+            你更新了在Neo4j数据库管理系统中使用的数据库。
           </React.Fragment>
         </span>
       </StyledConnectionAside>

@@ -55,7 +55,7 @@ function PaneBodySectionHeader({
       <PaneBodySectionTitle>{title}</PaneBodySectionTitle>
       {numOfElementsVisible < totalNumOfElements && (
         <PaneBodySectionSmallText>
-          {`(showing ${numOfElementsVisible} of ${totalNumOfElements})`}
+          {`(展示了 ${numOfElementsVisible} / ${totalNumOfElements})`}
         </PaneBodySectionSmallText>
       )}
     </PaneBodySectionHeaderWrapper>
@@ -105,12 +105,12 @@ function DefaultOverviewPane({
 
   return (
     <PaneWrapper>
-      <PaneHeader>{'Overview'}</PaneHeader>
+      <PaneHeader>{'总览'}</PaneHeader>
       <PaneBody>
         {labels && visibleLabelKeys.length !== 0 && (
           <div>
             <PaneBodySectionHeader
-              title={'Node labels'}
+              title={'节点标签'}
               numOfElementsVisible={visibleLabelKeys.length}
               totalNumOfElements={totalNumOfLabelTypes}
             />
@@ -139,7 +139,7 @@ function DefaultOverviewPane({
         {relTypes && visibleRelationshipKeys.length !== 0 && (
           <div>
             <PaneBodySectionHeader
-              title={'Relationship types'}
+              title={'关系边类型'}
               numOfElementsVisible={visibleRelationshipKeys.length}
               totalNumOfElements={totalNumOfRelTypes}
             />
@@ -167,7 +167,7 @@ function DefaultOverviewPane({
         <div style={{ paddingBottom: '10px' }}>
           {hasTruncatedFields && (
             <>
-              <WarningMessage text={'Record fields have been truncated.'} />
+              <WarningMessage text={'记录字段已被截断。'} />
               <br />
             </>
           )}
@@ -179,9 +179,9 @@ function DefaultOverviewPane({
           )}
           {nodeCount !== null &&
             relationshipCount !== null &&
-            `Displaying ${numberToUSLocale(
+            `共有 ${numberToUSLocale(
               nodeCount
-            )} nodes, ${numberToUSLocale(relationshipCount)} relationships.`}
+            )} 个节点， ${numberToUSLocale(relationshipCount)} 条关系边`}
         </div>
       </PaneBody>
     </PaneWrapper>

@@ -184,7 +184,7 @@ export const StyledFrameCommand = styled.label<{ selectedDb: string | null }>`
   display: block;
   &::before {
     color: ${props => props.theme.promptText};
-    content: '${props => (props.selectedDb || '') + '$ '}';
+    content: '${() => 'PKU$ '}';
   }
   .disable-font-ligatures & {
     font-variant-ligatures: none !important;

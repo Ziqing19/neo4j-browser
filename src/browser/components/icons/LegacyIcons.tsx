@@ -257,25 +257,25 @@ export const StackNextIcon = (): JSX.Element => (
   />
 )
 export const TableIcon = (): JSX.Element => (
-  <IconContainer icon={table} text="Table" width={LARGE_SIZE} />
+  <IconContainer icon={table} text="表格" width={LARGE_SIZE} />
 )
 export const VisualizationIcon = (): JSX.Element => (
-  <IconContainer icon={vizIcon} text="Graph" width={LARGE_SIZE} />
+  <IconContainer icon={vizIcon} text="图" width={LARGE_SIZE} />
 )
 export const AsciiIcon = (): JSX.Element => (
-  <IconContainer icon={text} text="Text" width={18} />
+  <IconContainer icon={text} text="文本" width={18} />
 )
 export const CodeIcon = (): JSX.Element => (
-  <IconContainer icon={appWindowCode} text="Code" width={LARGE_SIZE} />
+  <IconContainer icon={appWindowCode} text="代码" width={LARGE_SIZE} />
 )
 export const PlanIcon = (): JSX.Element => (
-  <IconContainer className="sl-hierarchy" text="Plan" />
+  <IconContainer className="sl-hierarchy" text="计划" />
 )
 export const AlertIcon = (): JSX.Element => (
-  <IconContainer className="sl-alert" text="Warn" />
+  <IconContainer className="sl-alert" text="警告" />
 )
 export const ErrorIcon = (): JSX.Element => (
-  <IconContainer className="fa fa-file-text-o" text="Error" />
+  <IconContainer className="fa fa-file-text-o" text="错误" />
 )
 
 export const BinIcon = (): JSX.Element => (

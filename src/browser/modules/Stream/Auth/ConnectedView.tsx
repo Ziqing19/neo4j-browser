@@ -37,22 +37,22 @@ const ConnectedView = ({
     <StyledConnectionBody>
       {username ? (
         <span>
-          You are connected as user <StyledCode>{username}</StyledCode>
+          尊敬的用户 <StyledCode>{username}</StyledCode> ，您已连接到数据库
           <br />
         </span>
       ) : (
-        'You are connected '
+        '您已连接到数据库 '
       )}
       {showHost && (
         <span>
-          to <StyledCode>{host}</StyledCode>
+          <StyledCode>{host}</StyledCode>
           <br />
         </span>
       )}
       {!hideStoreCredentials && (
         <StyledConnectionFooter>
-          Connection credentials are {storeCredentials ? '' : 'not '}
-          stored in your web browser.
+          登录凭据{storeCredentials ? '' : '没有'}
+          被储存在您的浏览器中
         </StyledConnectionFooter>
       )}
       {additionalFooter && (

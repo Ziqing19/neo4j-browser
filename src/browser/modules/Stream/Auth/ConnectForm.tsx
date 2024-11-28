@@ -50,9 +50,9 @@ import AutoExecButton from '../auto-exec-button'
 import { SmallSpinnerIcon } from 'browser-components/icons/LegacyIcons'
 
 const readableauthenticationMethods: Record<AuthenticationMethod, string> = {
-  [NATIVE]: 'Username / Password',
-  [NO_AUTH]: 'No authentication',
-  [SSO]: 'Single Sign On'
+  [NATIVE]: '用户名/密码',
+  [NO_AUTH]: '无认证',
+  [SSO]: 'SSO'
 }
 
 interface ConnectFormProps {
@@ -213,13 +213,7 @@ export default function ConnectForm(props: ConnectFormProps): JSX.Element {
   const schemeRestriction = props.allowedSchemes.length > 0
   const schemeMultiple = props.allowedSchemes.length > 1
 
-  const hoverText = schemeMultiple
-    ? `Pick neo4j${
-        hasSecureSchemes ? '+s' : ''
-      }:// for a routed connection (Aura, Cluster), bolt${
-        hasSecureSchemes ? '+s' : ''
-      }:// for a direct connection to a single instance.`
-    : ''
+  const hoverText = schemeMultiple ? `` : ''
 
   const { SSOError, SSOProviders, SSOLoading } = props
   const [SSORedirectError, setRedirectError] = useState('')
@@ -239,7 +233,7 @@ export default function ConnectForm(props: ConnectFormProps): JSX.Element {
       <StyledConnectionForm onSubmit={onConnectClick}>
         <StyledConnectionFormEntry>
           <StyledConnectionLabel htmlFor="url-input" title={hoverText}>
-            Connect URL{' '}
+            数据库URL{' '}
             <span
               style={{ fontStyle: 'italic' }}
               title="" /* reset parent title */
@@ -247,13 +241,13 @@ export default function ConnectForm(props: ConnectFormProps): JSX.Element {
               {reachabilityState === 'loading' && <SmallSpinnerIcon />}
               {reachabilityState === 'probablyFailed' && (
                 <span style={{ color: 'orange' }}>
-                  <SmallSpinnerIcon /> Connection will probably time out.
+                  <SmallSpinnerIcon /> 连接可能会超时
                 </span>
               )}
               {reachabilityState === 'failed' && (
                 <>
                   {' '}
-                  - Could not reach Neo4j.{' '}
+                  - 无法连接到数据库{' '}
                   {props.host.includes('localhost') &&
                     !props.host.includes('localhost:7687') &&
                     '(default port is 7687) '}
@@ -326,7 +320,7 @@ export default function ConnectForm(props: ConnectFormProps): JSX.Element {
         {props.allowedAuthMethods.length > 1 && (
           <StyledConnectionFormEntry>
             <StyledConnectionLabel>
-              Authentication type
+              验证方式
               <StyledConnectionSelect
                 data-testid="authenticationMethod"
                 onChange={props.onAuthenticationMethodChange}
@@ -345,7 +339,7 @@ export default function ConnectForm(props: ConnectFormProps): JSX.Element {
         {props.authenticationMethod === NATIVE && (
           <StyledConnectionFormEntry>
             <StyledConnectionLabel>
-              Username
+              用户名
               <StyledConnectionTextInput
                 data-testid="username"
                 onChange={props.onUsernameChange}
@@ -358,7 +352,7 @@ export default function ConnectForm(props: ConnectFormProps): JSX.Element {
         {props.authenticationMethod === NATIVE && (
           <StyledConnectionFormEntry>
             <StyledConnectionLabel>
-              Password
+              密码
               <StyledConnectionTextInput
                 data-testid="password"
                 onChange={props.onPasswordChange}
@@ -406,13 +400,13 @@ export default function ConnectForm(props: ConnectFormProps): JSX.Element {
           )}
 
         {props.connecting
-          ? 'Connecting...'
+          ? '连接中...'
           : props.authenticationMethod !== SSO && (
               <span
                 title={
                   reachabilityState === 'succeeded'
-                    ? 'Connect.'
-                    : 'Make sure a neo4j server is reachable at the connect URL.'
+                    ? '已连接'
+                    : '请确保数据库URL可用'
                 }
               >
                 <FormButton
@@ -423,7 +417,7 @@ export default function ConnectForm(props: ConnectFormProps): JSX.Element {
                     opacity: reachabilityState === 'succeeded' ? 1 : 0.4
                   }}
                 >
-                  Connect
+                  连接
                 </FormButton>
               </span>
             )}

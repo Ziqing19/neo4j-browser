@@ -51,134 +51,137 @@ import {
   getTelemetrySettings
 } from 'shared/utils/selectors'
 
+const themeOptions = {
+  auto: '自动',
+  normal: '普通',
+  outline: '边框',
+  dark: '黑暗'
+}
+
 const visualSettings = [
   {
-    title: 'User Interface',
+    title: '用户界面',
     settings: [
       {
         theme: {
           tooltip:
-            'Use "Auto" to have neo4j-browser detect system dark vs. light mode if available.',
-          displayName: 'Theme',
+            '使用“自动”让neo4j-browser检测系统深色与浅色模式（如果可用）。',
+          displayName: '主题',
           type: 'radio',
           options: [
-            actions.AUTO_THEME,
-            actions.LIGHT_THEME,
-            actions.OUTLINE_THEME,
-            actions.DARK_THEME
+            themeOptions[actions.AUTO_THEME],
+            themeOptions[actions.LIGHT_THEME],
+            themeOptions[actions.OUTLINE_THEME],
+            themeOptions[actions.DARK_THEME]
           ]
         }
       },
       {
         codeFontLigatures: {
-          displayName: 'Code font ligatures',
-          tooltip: 'Use font ligatures for the command bar and cypher snippets',
+          displayName: '代码字体连字',
+          tooltip: '在命令栏和cypher片段中使用字体连字',
           type: 'checkbox'
         }
       },
       {
         enableMultiStatementMode: {
-          displayName: 'Enable multi statement query editor',
-          tooltip: 'Allows query editor to execute multiple statements',
+          displayName: '启用多语句查询编辑器',
+          tooltip: '允许查询编辑器执行多个语句',
           type: 'checkbox'
         }
       }
     ]
   },
   {
-    title: 'Preferences',
+    title: '偏好设置',
     settings: [
       {
         initCmd: {
-          displayName: 'Initial command to execute',
-          tooltip: 'This commands is executed once connected to a graph.',
+          displayName: '初始执行命令',
+          tooltip: '一旦连接到图形数据库，就执行这些命令。',
           type: 'input'
         }
       },
       {
         connectionTimeout: {
-          displayName: 'Connection timeout (ms)',
-          tooltip:
-            'The timeout in milliseconds when establishing a connection to Neo4j.',
+          displayName: '连接超时（毫秒）',
+          tooltip: '建立连接到Neo4j时的超时时间（毫秒）。',
           type: 'input'
         }
       },
       {
         useReadTransactions: {
-          displayName: 'Use read transactions for cypher queries.',
+          displayName: '对cypher查询使用读取事务。',
           tooltip:
-            'This setting can be useful in a cluster environment where you want to ensure that read queries are sent to secondaries.',
+            '此设置在集群环境中很有用，如果你想确保读取查询被发送到次要节点。',
           type: 'checkbox'
         }
       }
     ]
   },
   {
-    title: 'Result Frames',
+    title: '结果框架',
     settings: [
       {
         maxFrames: {
-          displayName: 'Maximum number of result frames',
-          tooltip:
-            'Max number of result frames. When reached, old frames gets retired.'
+          displayName: '最大结果框架数',
+          tooltip: '达到最大结果框架数时，旧框架将被替换。'
         }
       },
       {
         maxHistory: {
-          displayName: 'Max history length',
-          tooltip:
-            'Max number of history entries. When reached, old entries gets retired.'
+          displayName: '最大历史长度',
+          tooltip: '达到最大历史条目数时，旧条目将被替换。'
         }
       },
       {
         scrollToTop: {
-          displayName: 'Scroll to top when adding frames',
-          tooltip: 'Automatically scroll stream to top on new frames.',
+          displayName: '添加框架时滚动到顶部',
+          tooltip: '在新框架上自动滚动流到顶部。',
           type: 'checkbox'
         }
       }
     ]
   },
   {
-    title: 'Graph Visualization',
+    title: '图形可视化',
     settings: [
       {
         initialNodeDisplay: {
-          displayName: 'Initial Node Display',
-          tooltip:
-            'Limit number of nodes displayed on first load of the graph visualization.'
+          displayName: '初始节点显示',
+          tooltip: '限制在图形可视化首次加载时显示的节点数量。'
         }
       },
       {
         maxNeighbours: {
-          displayName: 'Max neighbours from vis interaction',
-          tooltip: 'Limit exploratory queries to this limit.'
+          displayName: '最大邻居数',
+          tooltip: '限制探索性查询到此限制。'
         }
       },
       {
         maxRows: {
-          displayName: 'Result view max rows',
-          tooltip: "Max number of rows to render in 'Rows' result view"
+          displayName: '结果视图最大行数',
+          tooltip: "在'行'结果视图中渲染的最大行数"
         }
       },
       {
         maxFieldItems: {
-          displayName: 'Max record fields',
-          tooltip: 'Limits the number of fields per returned record'
+          displayName: '最大记录字段数',
+          tooltip: '限制每个返回记录的字段数'
         }
       },
       {
         autoComplete: {
-          displayName: 'Connect result nodes',
+          displayName: '连接结果节点',
           tooltip:
-            'If this is checked, after a cypher query result is retrieved, a second query is executed to fetch relationships between result nodes.',
+            '如果选中，在检索到cypher查询结果后，将执行第二个查询以获取结果节点之间的关系。',
           type: 'checkbox'
         }
       },
       {
         showWheelZoomInfo: {
-          displayName: 'Show zoom interactions hint',
-          tooltip: 'Pop-up info block with scroll interactions keybindings.',
+          displayName: '显示缩放交互提示',
+          tooltip: '弹出信息块，显示滚动交互的按键绑定。',
           type: 'checkbox'
         }
       }
@@ -199,9 +202,8 @@ function getTelemetryVisualSetting({
     SETTINGS_NOT_LOADED: [
       {
         allowUserStats: {
-          displayName: 'Product usage',
-          tooltip:
-            'Product usage analytics is disabled before database connection is fully established.',
+          displayName: '产品使用情况',
+          tooltip: '在数据库连接完全建立之前，产品使用分析被禁用。',
           type: 'info'
         }
       }
@@ -209,12 +211,8 @@ function getTelemetryVisualSetting({
     DESKTOP_SETTING: [
       {
         allowUserStats: {
-          displayName: 'Product Analytics',
-          tooltip: `Product usage statistics are ${
-            telemetrySettings.allowUserStats ? 'sent' : 'not sent'
-          } and crash reports are ${
-            telemetrySettings.allowCrashReporting ? 'sent' : 'not sent'
-          }. These settings can be changed in Desktop.`,
+          displayName: '产品分析',
+          tooltip: `产品使用统计${telemetrySettings.allowUserStats ? '已发送' : '未发送'}，崩溃报告${telemetrySettings.allowCrashReporting ? '已发送' : '未发送'}。这些设置可以在桌面端更改。`,
           type: 'info'
         }
       }
@@ -222,10 +220,8 @@ function getTelemetryVisualSetting({
     NEO4J_CONF: [
       {
         allowUserStats: {
-          displayName: 'Product usage',
-          tooltip: `Your database is ${
-            telemetrySettings.allowUserStats ? '' : 'not '
-          }configured to send product analytics data in neo4j.conf.`,
+          displayName: '产品使用情况',
+          tooltip: `您的数据库被${telemetrySettings.allowUserStats ? '' : '未'}配置为在neo4j.conf中发送产品分析数据。`,
           type: 'info'
         }
       }
@@ -233,10 +229,8 @@ function getTelemetryVisualSetting({
     AURA: [
       {
         allowUserStats: {
-          displayName: 'Product usage',
-          tooltip: `Aura Console has configured your database to ${
-            telemetrySettings.allowUserStats ? '' : 'not '
-          } send product analytics data.`,
+          displayName: '产品使用情况',
+          tooltip: `Aura控制台已配置您的数据库${telemetrySettings.allowUserStats ? '' : '未'}发送产品分析数据。`,
           type: 'info'
         }
       }
@@ -244,18 +238,18 @@ function getTelemetryVisualSetting({
     BROWSER_SETTING: [
       {
         allowCrashReports: {
-          displayName: 'Send anonymous crash reports',
+          displayName: '发送匿名崩溃报告',
           tooltip:
-            'Crash reports allow us to quickly diagnose and fix problems. No personal information is collected or sent.',
+            '崩溃报告使我们能够快速诊断和修复问题。不会收集或发送任何个人信息。',
           type: 'checkbox',
           onChange: trackOptOutCrashReports
         }
       },
       {
         allowUserStats: {
-          displayName: 'Send anonymous usage statistics',
+          displayName: '发送匿名使用统计',
           tooltip:
-            'This data helps us prioritise features and improvements. No personal information is collected or sent.',
+            '这些数据帮助我们确定功能和改进的优先级。不会收集或发送任何个人信息。',
           type: 'checkbox',
           onChange: trackOptOutUserStats
         }
@@ -263,7 +257,7 @@ function getTelemetryVisualSetting({
     ]
   }
 
-  const title = 'Product Analytics'
+  const title = '产品分析'
   const settings = settingsByFactor[telemetrySettings.source]
   return { title, settings }
 }
@@ -407,7 +401,7 @@ export const UserSettings = ({
 
   return (
     <Drawer id="db-settings">
-      <DrawerHeader>Browser Settings</DrawerHeader>
+      <DrawerHeader>浏览设置</DrawerHeader>
       <DrawerBody>
         <DrawerSection>
           <DrawerSectionBody key="settings">{mappedSettings}</DrawerSectionBody>

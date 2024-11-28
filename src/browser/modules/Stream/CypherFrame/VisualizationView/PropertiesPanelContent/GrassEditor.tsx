@@ -120,7 +120,7 @@ export class GrassEditorComponent extends Component<GrassEditorProps> {
     return (
       <StyledInlineListItem key="color-picker">
         <StyledInlineList>
-          <StyledInlineListItem>Color:</StyledInlineListItem>
+          <StyledInlineListItem>颜色：</StyledInlineListItem>
           {this.circleSelector(
             'color',
             this.graphStyle.defaultColors(),
@@ -142,7 +142,7 @@ export class GrassEditorComponent extends Component<GrassEditorProps> {
     return (
       <StyledInlineListItem key="size-picker">
         <StyledInlineList data-testid="size-picker">
-          <StyledInlineListItem>Size:</StyledInlineListItem>
+          <StyledInlineListItem>大小：</StyledInlineListItem>
           {this.circleSelector(
             'size',
             this.graphStyle.defaultSizes(),
@@ -228,7 +228,7 @@ export class GrassEditorComponent extends Component<GrassEditorProps> {
     return (
       <StyledInlineListItem key="caption-picker">
         <StyledInlineList>
-          <StyledInlineListItem>Caption:</StyledInlineListItem>
+          <StyledInlineListItem>标题</StyledInlineListItem>
           {captionSelector('<id>', '<id>')}
           {typeCaptionSelector}
           {captionSelectors}

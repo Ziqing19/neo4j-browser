@@ -276,8 +276,7 @@ export class CypherEditor extends React.Component<
           startColumn: 1,
           endLineNumber: secondStatementLine,
           endColumn: 1000,
-          message:
-            'To use multi statement queries, please enable multi statement in the settings panel.',
+          message: '要使用多语句查询，请在设置面板中启用多语句功能。',
           severity: monaco.MarkerSeverity.Warning
         }
       ])
@@ -299,8 +298,9 @@ export class CypherEditor extends React.Component<
               ...monaco.editor.getModelMarkers({ owner: this.getMonacoId() }),
               ...result.summary.notifications.map(
                 ({ description, position, title }) => {
-                  const line = 'line' in position ? position.line ?? 0 : 0
-                  const column = 'column' in position ? position.column ?? 0 : 0
+                  const line = 'line' in position ? (position.line ?? 0) : 0
+                  const column =
+                    'column' in position ? (position.column ?? 0) : 0
                   return {
                     startLineNumber: statementLineNumber + line,
                     startColumn:

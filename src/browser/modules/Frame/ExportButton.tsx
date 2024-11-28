@@ -52,7 +52,7 @@ function ExportButton({
   return (
     <>
       {canExport && (
-        <DropdownButton title="Exports" data-testid="frame-export-dropdown">
+        <DropdownButton title="导出文件" data-testid="frame-export-dropdown">
           <DownloadIcon />
           {canExport && (
             <DropdownList>
@@ -60,7 +60,7 @@ function ExportButton({
                 {isRelateAvailable && (
                   <>
                     <DropdownItem onClick={() => newProjectFile(frame.cmd)}>
-                      Save as project file
+                      保存为项目文件
                     </DropdownItem>
                     <DropDownItemDivider />
                   </>
@@ -72,7 +72,7 @@ function ExportButton({
                     onClick={download}
                     key={name}
                   >
-                    Export {name}
+                    导出为 {name}
                   </DropdownItem>
                 ))}
               </DropdownContent>
