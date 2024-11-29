@@ -130,7 +130,7 @@ export type SettingsState = {
 export const initialState: SettingsState = {
   maxHistory: 30,
   theme: AUTO_THEME,
-  initCmd: ':play start',
+  initCmd: ':ont',
   playImplicitInitCommands: true,
   initialNodeDisplay: 300,
   maxNeighbours: 100,

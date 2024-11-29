@@ -135,7 +135,7 @@ const LabelItems = ({
   count,
   graphStyleData
 }: LabelItemsProps) => {
-  let labelItems: any = <p>There are no labels in database</p>
+  let labelItems: any = <p>在该数据库中没有任何节点标签</p>
   if (labels.length) {
     const editorCommandTemplate = (text: any, i: any) => {
       if (i === 0) {
@@ -155,7 +155,7 @@ const LabelItems = ({
   }
   return (
     <DrawerSection>
-      <DrawerSubHeader>Node labels</DrawerSubHeader>
+      <DrawerSubHeader>节点标签</DrawerSubHeader>
       <DrawerSectionBody className={wrapperStyle}>
         {labelItems}
       </DrawerSectionBody>
@@ -189,7 +189,7 @@ const RelationshipItems = ({
   count,
   graphStyleData
 }: RelationshipItemsProps) => {
-  let relationshipItems: any = <p>No relationships in database</p>
+  let relationshipItems: any = <p>在该数据库中没有任何关系边</p>
   if (relationshipTypes.length > 0) {
     const editorCommandTemplate = (text: any, i: any) => {
       if (i === 0) {
@@ -211,7 +211,7 @@ const RelationshipItems = ({
   }
   return (
     <DrawerSection>
-      <DrawerSubHeader>Relationship types</DrawerSubHeader>
+      <DrawerSubHeader>关系边类型</DrawerSubHeader>
       <DrawerSectionBody className={wrapperStyle}>
         {relationshipItems}
       </DrawerSectionBody>
@@ -239,7 +239,7 @@ const PropertyItems = ({
   moreStep,
   onMoreClick
 }: PropertyItemsProps) => {
-  let propertyItems: any = <p>There are no properties in database</p>
+  let propertyItems: any = <p>在该数据库中没有任何属性</p>
   if (properties.length > 0) {
     const editorCommandTemplate = (text: any) => {
       return `MATCH (n) WHERE (n.${escapeCypherIdentifier(text)}) IS NOT NULL 
@@ -262,7 +262,7 @@ RETURN DISTINCT "relationship" AS entity, r.${escapeCypherIdentifier(
   }
   return (
     <DrawerSection>
-      <DrawerSubHeader>Property keys</DrawerSubHeader>
+      <DrawerSubHeader>属性键名</DrawerSubHeader>
       <DrawerSectionBody className={wrapperStyle}>
         {propertyItems}
       </DrawerSectionBody>

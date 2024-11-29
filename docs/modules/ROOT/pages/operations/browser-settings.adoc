@@ -21,7 +21,7 @@ To view all currently configured settings, run `:config`.
 {
   "maxHistory": 30,
   "theme": "auto",
-  "initCmd": ":play start",
+  "initCmd": ":ont",
   "playImplicitInitCommands": true,
   "initialNodeDisplay": 300,
   "maxNeighbours": 100,
@@ -73,7 +73,7 @@ Possible values: `auto`, `normal`, `outline`, and `dark`.
 | yes
 
 | `initCmd`
-| `:play start`
+| `:ont`
 | The initial command that is run when connected to the graph.
 | yes
 

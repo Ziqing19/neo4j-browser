@@ -120,7 +120,6 @@ export function MainEditor({
   history,
   projectId,
   updateFavorite,
-  useDb,
   params
 }: EditorFrameProps): JSX.Element {
   const [addFile] = useMutation(ADD_PROJECT_FILE)
@@ -292,7 +291,7 @@ export function MainEditor({
                   context: '!suggestWidgetVisible && !findWidgetVisible'
                 }
               }}
-              useDb={useDb}
+              useDb={'PKU'}
               sendCypherQuery={(text: string) =>
                 new Promise((res, rej) =>
                   bus.self(

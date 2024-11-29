@@ -37,18 +37,18 @@ export class UserDetails extends Component<any> {
         .includes('admin')
       return (
         <DrawerSection className="user-details">
-          <DrawerSubHeader>Connected as</DrawerSubHeader>
+          <DrawerSubHeader>用户信息</DrawerSubHeader>
           <DrawerSectionBody>
             <StyledTable>
               <tbody>
                 <tr>
-                  <StyledKey>Username:</StyledKey>
+                  <StyledKey>用户名：</StyledKey>
                   <StyledValue data-testid="user-details-username">
                     {userDetails.username}
                   </StyledValue>
                 </tr>
                 <tr>
-                  <StyledKey>Roles:</StyledKey>
+                  <StyledKey>角色：</StyledKey>
                   <StyledValue data-testid="user-details-roles">
                     {mappedRoles}
                   </StyledValue>
@@ -56,7 +56,9 @@ export class UserDetails extends Component<any> {
                 {hasAdminRole && (
                   <>
                     <tr>
-                      <StyledKey className="user-list-button">Admin:</StyledKey>
+                      <StyledKey className="user-list-button">
+                        管理员：
+                      </StyledKey>
                       <StyledValue>
                         <Link
                           onClick={() =>
@@ -82,9 +84,7 @@ export class UserDetails extends Component<any> {
                   </>
                 )}
                 <tr>
-                  <StyledKey className="user-list-button">
-                    Disconnect:
-                  </StyledKey>
+                  <StyledKey className="user-list-button">断开连接：</StyledKey>
                   <StyledValue>
                     <Link
                       onClick={() =>

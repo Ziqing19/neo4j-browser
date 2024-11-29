@@ -91,7 +91,7 @@ export const DatabaseSelector = ({
 
   return (
     <DrawerSection>
-      <DrawerSubHeader>Use database</DrawerSubHeader>
+      <DrawerSubHeader>数据库选择</DrawerSubHeader>
       <DrawerSectionBody>
         <Select
           value={selectedDb}

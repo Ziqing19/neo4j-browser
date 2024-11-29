@@ -27,6 +27,7 @@ import {
   POST_CANCEL_TRANSACTION_MESSAGE
 } from './boltWorkerMessages'
 import WorkPool from 'services/WorkPool'
+import str2Data from 'services/generateOntAsBolt'
 
 export const setupBoltWorker = (
   boltWorkPool: WorkPool,
@@ -34,6 +35,13 @@ export const setupBoltWorker = (
   payload: any,
   onLostConnection: (error: Error) => void = (): void => undefined
 ): Promise<QueryResult> => {
+  // 截获ONT命令，返回固定的本体模型
+  if (payload.input.match(/^:?ont$/i)) {
+    return new Promise(resolve => {
+      console.log('ont results', str2Data().records)
+      resolve(addTypesAsField(str2Data() as QueryResult))
+    })
+  }
   const workerPromise = new Promise<QueryResult>((resolve, reject) => {
     const work = boltWorkPool.doWork({
       id,
@@ -51,6 +59,7 @@ export const setupBoltWorker = (
             break
           case CYPHER_RESPONSE_MESSAGE:
             boltWorkPool.finishWork(work.id)
+            console.log('cypher results', data.result.records)
             resolve(addTypesAsField(data.result))
             break
           case POST_CANCEL_TRANSACTION_MESSAGE:

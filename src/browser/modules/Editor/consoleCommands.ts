@@ -20,6 +20,10 @@
 
 export default [
   {
+    name: ':ont',
+    description: ' - 加载本体模型'
+  },
+  {
     name: ':help',
     description: ' - learn about other topics',
     commands: [

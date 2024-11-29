@@ -10,7 +10,7 @@ Object {
   "connectionTimeout": 30000,
   "editorLint": false,
   "enableMultiStatementMode": true,
-  "initCmd": ":play start",
+  "initCmd": ":ont",
   "initialNodeDisplay": 300,
   "maxFieldItems": 500,
   "maxFrames": 15,

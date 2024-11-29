@@ -51,29 +51,27 @@ import {
   getTelemetrySettings
 } from 'shared/utils/selectors'
 
-const themeOptions = {
-  auto: '自动',
-  normal: '普通',
-  outline: '边框',
-  dark: '黑暗'
-}
-
 const visualSettings = [
   {
     title: '用户界面',
     settings: [
       {
         theme: {
-          tooltip:
-            '使用“自动”让neo4j-browser检测系统深色与浅色模式（如果可用）。',
+          tooltip: '使用“自动”让浏览器检测系统深色与浅色模式（如果可用）。',
           displayName: '主题',
           type: 'radio',
           options: [
-            themeOptions[actions.AUTO_THEME],
-            themeOptions[actions.LIGHT_THEME],
-            themeOptions[actions.OUTLINE_THEME],
-            themeOptions[actions.DARK_THEME]
-          ]
+            actions.AUTO_THEME,
+            actions.LIGHT_THEME,
+            actions.OUTLINE_THEME,
+            actions.DARK_THEME
+          ],
+          i18n: {
+            auto: '自动',
+            normal: '普通',
+            outline: '边框',
+            dark: '黑暗'
+          }
         }
       },
       {
@@ -323,6 +321,7 @@ export const UserSettings = ({
                 </StyledSettingLabel>
                 <RadioSelector
                   options={settingObj[setting].options}
+                  labels={settingObj[setting].i18n}
                   onChange={(event: any) => {
                     const newValue = event.target.value
                     settings[setting] = newValue

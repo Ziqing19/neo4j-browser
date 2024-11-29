@@ -77,7 +77,7 @@ export function DBMSInfo(props: any): JSX.Element {
 
   return (
     <Drawer id="db-drawer">
-      <DrawerHeader>Database Information</DrawerHeader>
+      <DrawerHeader>数据库信息</DrawerHeader>
       <DrawerBody>
         <DatabaseSelector
           uniqueDatabases={uniqueDatabases}
@@ -87,17 +87,17 @@ export function DBMSInfo(props: any): JSX.Element {
         {!props.countAutoRefreshing && (
           <>
             <p>
-              Automatic updates of node and relationship counts have been
-              disabled for performance reasons, likely due to{' '}
+              自动更新节点和关系计数已被禁用，这是出于性能原因，很可能是因为：
               <DrawerExternalLink href="https://neo4j.com/docs/cypher-manual/current/access-control/limitations/#access-control-limitations-db-operations">
-                RBAC configuration.
+                RBAC配置
               </DrawerExternalLink>
             </p>
+            。
             <Button
               loading={props.countLoading}
               onClick={() => props.forceCount()}
             >
-              Refresh counts
+              刷新计数
             </Button>
           </>
         )}

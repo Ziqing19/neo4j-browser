@@ -40,7 +40,7 @@ const UseDbFrame = (props: BaseFrameProps) => {
         <span>
           <React.Fragment>
             <H3>Use database</H3>
-            你更新了在Neo4j数据库管理系统中使用的数据库。
+            你更新了在本数据库管理系统中使用的数据库。
           </React.Fragment>
         </span>
       </StyledConnectionAside>
@@ -48,15 +48,14 @@ const UseDbFrame = (props: BaseFrameProps) => {
         <StyledConnectionBody>
           {useDb ? (
             <>
-              Queries from this point and forward are using the database{' '}
-              <StyledCode>{useDb}</StyledCode> as the target.
+              从现在开始，之后的查询将使用数据库
+              <StyledCode>{useDb}</StyledCode>作为目标。
             </>
           ) : (
-            "You are now targeting the dbms's default database."
+            '您现在正在使用本系统的默认数据库。'
           )}
           <div>
-            Use the <TextCommand command={listDbsCommand} /> to list all
-            available databases.
+            使用 <TextCommand command={listDbsCommand} /> 列出所有可用的数据库
           </div>
         </StyledConnectionBody>
       </StyledConnectionBodyContainer>

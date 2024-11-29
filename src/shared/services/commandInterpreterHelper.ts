@@ -412,7 +412,7 @@ const availableCommands = [
   {
     name: 'cypher',
     match: (cmd: any) =>
-      /^cypher$/.test(cmd) ||
+      /^(cypher|ont)$/.test(cmd) ||
       new RegExp(`^${autoCommitTxCommand}`, 'i').test(cmd),
     exec: (action: any, put: any, store: any) => {
       // Sentry crashes tests without the ?. when it's not been initiated

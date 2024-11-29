@@ -111,13 +111,14 @@ export const CheckboxSelector = (props: any) => (
 type RadioSelectorState = any
 
 export class RadioSelector extends Component<
-  { onChange?: any; options: any[]; selectedValue?: string },
+  { onChange?: any; options: any[]; labels?: string[]; selectedValue?: string },
   RadioSelectorState
 > {
   state: RadioSelectorState = {}
   constructor(props: {} = { options: [] }) {
     super(props as any)
     this.state.selectedValue = this.props.selectedValue || null
+    this.state.labels = this.props.labels || null
   }
 
   isSelectedValue(option: any) {
@@ -140,7 +141,9 @@ export class RadioSelector extends Component<
                   this.props.onChange(event)
                 }}
               />
-              <StyledLabel htmlFor={option}>{option}</StyledLabel>
+              <StyledLabel htmlFor={option}>
+                {this.state.labels ? this.state.labels[option] : option}
+              </StyledLabel>
             </StyledRadioEntry>
           )
         })}

@@ -109,7 +109,7 @@ const Main = React.memo(function Main(props: MainProps) {
       )}
       {connectionState === PENDING_STATE && !past10Sec && (
         <WarningBanner data-testid="reconnectBanner">
-          连接到服务器丢失。正在重新连接...
+          与服务器的连接断开。正在重新连接...
         </WarningBanner>
       )}
       {connectionState === CONNECTING_STATE && past5Sec && !past10Sec && (

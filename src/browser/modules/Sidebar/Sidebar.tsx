@@ -73,7 +73,6 @@ const Sidebar = ({
   neo4jConnectionState,
   showStaticScripts,
   syncConnected,
-  loadSync,
   isRelateAvailable,
   scriptDraft
 }: SidebarProps) => {
@@ -81,13 +80,13 @@ const Sidebar = ({
     {
       // Consider use constant variable to store those keys
       name: 'DBMS',
-      title: 'Database Information',
+      title: '数据库信息',
       icon: function dbIcon(isOpen: boolean): JSX.Element {
         return (
           <DatabaseIcon
             isOpen={isOpen}
             connectionState={neo4jConnectionState}
-            title="Database"
+            title="数据库信息"
           />
         )
       },
@@ -95,9 +94,9 @@ const Sidebar = ({
     },
     {
       name: 'Favorites',
-      title: 'Favorites',
+      title: '我的收藏',
       icon: function favIcon(isOpen: boolean): JSX.Element {
-        return <FavoritesIcon isOpen={isOpen} title="Favorites" />
+        return <FavoritesIcon isOpen={isOpen} title="我的收藏" />
       },
       content: function FavoritesDrawer(): JSX.Element {
         return (
@@ -113,9 +112,9 @@ const Sidebar = ({
       ? [
           {
             name: 'Project Files',
-            title: 'Project Files',
+            title: '项目文件',
             icon: function projectFilesIcon(isOpen: boolean): JSX.Element {
-              return <ProjectFilesIcon isOpen={isOpen} title="Project Files" />
+              return <ProjectFilesIcon isOpen={isOpen} title="项目文件" />
             },
             content: function ProjectDrawer(): JSX.Element {
               return <ProjectFilesDrawer scriptDraft={scriptDraft || ''} />
@@ -125,33 +124,33 @@ const Sidebar = ({
       : []),
     {
       name: 'Guides',
-      title: 'Guides',
+      title: '功能指引',
       icon: function GuideDrawerIconComp(isOpen: boolean): JSX.Element {
         return <GuideDrawerIcon isOpen={isOpen} />
       },
       content: GuideDrawer
     }
-  ]
+  ].filter(({ name }) => ['DBMS'].includes(name))
 
   const bottomNavItems: NavItem[] = [
     {
       name: 'Documents',
-      title: 'Help &amp; Resources',
+      title: '帮助 &amp; 资源',
       icon: function docsIcon(isOpen: boolean): JSX.Element {
-        return <DocumentsIcon isOpen={isOpen} title="Help &amp; Resources" />
+        return <DocumentsIcon isOpen={isOpen} title="帮助 &amp; 资源" />
       },
       content: DocumentsDrawer,
       enableCannyBadge: true
     },
     {
       name: 'Sync',
-      title: 'Browser Sync',
+      title: '云同步',
       icon: function syncIcon(isOpen: boolean): JSX.Element {
         return (
           <CloudSyncIcon
             isOpen={isOpen}
             connected={syncConnected}
-            title="Browser Sync"
+            title="云同步"
           />
         )
       },
@@ -159,21 +158,21 @@ const Sidebar = ({
     },
     {
       name: 'Settings',
-      title: 'Settings',
+      title: '设置',
       icon: function settingIcon(isOpen: boolean): JSX.Element {
-        return <SettingsIcon isOpen={isOpen} title="Browser Settings" />
+        return <SettingsIcon isOpen={isOpen} title="设置" />
       },
       content: UserSettingsDrawer
     },
     {
       name: 'About',
-      title: 'About Neo4j',
+      title: '关于本项目',
       icon: function aboutIcon(isOpen: boolean): JSX.Element {
-        return <AboutIcon isOpen={isOpen} title="About Neo4j" />
+        return <AboutIcon isOpen={isOpen} title="关于本项目" />
       },
       content: AboutDrawer
     }
-  ].filter(({ name }) => loadSync || name !== 'Sync') // TODO
+  ].filter(({ name }) => ['Settings', 'About'].includes(name)) // TODO
 
   return (
     <TabNavigation

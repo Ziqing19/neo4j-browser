@@ -69,43 +69,43 @@ export const DatabaseKernelInfo = ({
 }: DatabaseKernelInfo) => {
   return (
     <DrawerSection className="database-kernel-info">
-      <DrawerSubHeader>DBMS</DrawerSubHeader>
+      <DrawerSubHeader>数据库信息</DrawerSubHeader>
       <DrawerSectionBody>
         <StyledTable>
           <tbody>
             {role && (
               <tr>
-                <StyledKey>Cluster role: </StyledKey>
+                <StyledKey>集群角色：</StyledKey>
                 <StyledValue>{role}</StyledValue>
               </tr>
             )}
             {version && (
               <tr>
-                <StyledKey>Version: </StyledKey>
+                <StyledKey>版本号： </StyledKey>
                 <StyledValue>{version}</StyledValue>
               </tr>
             )}
             {edition && (
               <tr>
-                <StyledKey>Edition: </StyledKey>
+                <StyledKey>版本类型： </StyledKey>
                 <StyledValueUCFirst>{edition}</StyledValueUCFirst>
               </tr>
             )}
             {dbName && (
               <tr>
-                <StyledKey>Name: </StyledKey>
+                <StyledKey>数据库： </StyledKey>
                 <StyledValue>{dbName}</StyledValue>
               </tr>
             )}
             {storeSize && (
               <tr>
-                <StyledKey>Size: </StyledKey>
+                <StyledKey>大小： </StyledKey>
                 <StyledValue>{toHumanReadableBytes(storeSize)}</StyledValue>
               </tr>
             )}
             {databases && databases.length > 0 && (
               <tr>
-                <StyledKey>Databases: </StyledKey>
+                <StyledKey>所有数据库：</StyledKey>
                 <StyledValue>
                   <Link onClick={() => onItemClick(`:${listDbsCommand}`)}>
                     :{listDbsCommand}
@@ -114,13 +114,13 @@ export const DatabaseKernelInfo = ({
               </tr>
             )}
             <tr>
-              <StyledKey>Information: </StyledKey>
+              <StyledKey>信息：</StyledKey>
               <StyledValue>
                 <Link onClick={() => onItemClick(':sysinfo')}>:sysinfo</Link>
               </StyledValue>
             </tr>
             <tr>
-              <StyledKey>Query List: </StyledKey>
+              <StyledKey>查询列表：</StyledKey>
               <StyledValue>
                 <Link onClick={() => onItemClick(':queries')}>:queries</Link>
               </StyledValue>
