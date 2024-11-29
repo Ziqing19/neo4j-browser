@@ -37,6 +37,7 @@ import { GetNodeNeighboursFn, VizItem } from '../types'
 import { GraphStats } from '../utils/mapper'
 import { GraphModel } from '../models/Graph'
 import { GraphInteractionCallBack } from './Graph/GraphEventHandlerModel'
+import { RecommendationPanel } from './RecommendationPanel'
 
 const DEFAULT_MAX_NEIGHBOURS = 100
 
@@ -131,7 +132,7 @@ export class GraphVisualizer extends Component<
       relationships,
       nodePropertiesExpandedByDefault
     } = this.props
-
+    console.log(nodes)
     const selectedItem: VizItem = nodeLimitHit
       ? {
           type: 'status-item',
@@ -298,6 +299,7 @@ export class GraphVisualizer extends Component<
           DetailsPaneOverride={this.props.DetailsPaneOverride}
           OverviewPaneOverride={this.props.OverviewPaneOverride}
         />
+        {this.props.nodes[0].labels.includes('概念') && <RecommendationPanel />}
       </StyledFullSizeContainer>
     )
   }

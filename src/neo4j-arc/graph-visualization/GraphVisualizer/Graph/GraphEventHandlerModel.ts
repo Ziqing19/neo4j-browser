@@ -151,6 +151,11 @@ export class GraphEventHandlerModel {
   }
 
   nodeDblClicked(d: NodeModel): void {
+    if (d.labels.includes('概念')) {
+      console.log(this.visualization)
+      this.visualization.addRecommendationLabel(d)
+      return
+    }
     if (d.expanded) {
       this.nodeCollapse(d)
       return

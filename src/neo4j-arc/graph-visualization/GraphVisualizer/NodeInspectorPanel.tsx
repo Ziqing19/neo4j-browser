@@ -86,18 +86,10 @@ export class NodeInspectorPanel extends Component<NodeInspectorPanelProps> {
     return (
       <>
         <StyledNodeInspectorTopMenuChevron
-          aria-label={
-            expanded
-              ? 'Collapse the node properties display'
-              : 'Expand the node properties display'
-          }
+          aria-label={expanded ? '折叠节点属性侧边栏' : '展开节点属性侧边栏'}
           expanded={expanded}
           onClick={toggleExpanded}
-          title={
-            expanded
-              ? 'Collapse the node properties display'
-              : 'Expand the node properties display'
-          }
+          title={expanded ? '折叠节点属性侧边栏' : '展开节点属性侧边栏'}
         >
           {expanded ? <ChevronRightIcon /> : <ChevronLeftIcon />}
         </StyledNodeInspectorTopMenuChevron>

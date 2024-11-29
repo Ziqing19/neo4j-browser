@@ -62,7 +62,7 @@ export default function str2Data(): QueryResult {
             high: 0,
             'transport-class': 'Integer'
           },
-          labels: [node_n.name],
+          labels: [node_n.name, '概念'],
           properties: {
             name: node_n.name,
             entityId: ''
@@ -99,7 +99,7 @@ export default function str2Data(): QueryResult {
             high: 0,
             'transport-class': 'Integer'
           },
-          labels: [node_m.name],
+          labels: [node_m.name, '概念'],
           properties: {
             name: node_m.name,
             entityId: ''
