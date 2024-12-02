@@ -36,7 +36,9 @@ export const MainEditorWrapper = styled.div<FullscreenProps>`
   background-color: ${props => props.theme.frameBackground};
   border-radius: 2px;
   box-shadow: ${props => props.theme.standardShadow};
-  margin: 10px 10px 0 10px;
+  margin: 0;
+  height: 0;
+  overflow: hidden;
   ${props =>
     props.isFullscreen &&
     `
@@ -53,7 +55,7 @@ export const MainEditorWrapper = styled.div<FullscreenProps>`
       [id^=monaco-] .monaco-editor {
         height: calc(100vh - 20px) !important;
       }
-  `}};
+  `}}
 `
 
 export const CurrentEditIconContainer = styled.span`

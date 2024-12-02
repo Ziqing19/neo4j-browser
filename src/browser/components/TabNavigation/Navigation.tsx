@@ -73,7 +73,7 @@ class Navigation extends Component<NavigationProps, NavigationState> {
   state: NavigationState = {
     transitionState: this.props.selectedDrawerName ? Open : Closed,
     closingDrawerName: null,
-    guideWidth: LARGE_DRAWER_WIDTH,
+    guideWidth: STANDARD_DRAWER_WIDTH,
     isResizing: false
   }
 

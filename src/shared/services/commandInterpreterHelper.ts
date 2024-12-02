@@ -475,6 +475,7 @@ const availableCommands = [
           return res
         })
         .catch((e: any) => {
+          // Neo.ClientError.Statement.SyntaxError
           const request = getRequest(store.getState(), id)
           // Only update error statuses for pending queries
           if (request.status !== REQUEST_STATUS_PENDING) {

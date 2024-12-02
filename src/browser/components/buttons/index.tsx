@@ -357,6 +357,7 @@ const StyledFrameControlButton = styled.button<{
 `
 
 export const StyledFrameButton = styled.button`
+  display: none;
   color: ${props => props.theme.frameButtonTextColorLegacy};
   background-color: transparent;
   border-left: transparent;

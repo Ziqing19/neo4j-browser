@@ -55,6 +55,7 @@ import {
 import { utilizeBrowserSync } from 'shared/modules/features/featuresDuck'
 import { getCurrentDraft } from 'shared/modules/sidebar/sidebarDuck'
 import { isUserSignedIn } from 'shared/modules/sync/syncDuck'
+import MyGuideDrawer from 'project-root/src/browser/modules/Sidebar/MyGuideDrawer'
 
 interface SidebarProps {
   selectedDrawerName: string
@@ -77,6 +78,14 @@ const Sidebar = ({
   scriptDraft
 }: SidebarProps) => {
   const topNavItems: NavItem[] = [
+    {
+      name: 'Guides',
+      title: '功能指引',
+      icon: function GuideDrawerIconComp(isOpen: boolean): JSX.Element {
+        return <GuideDrawerIcon isOpen={isOpen} />
+      },
+      content: MyGuideDrawer
+    },
     {
       // Consider use constant variable to store those keys
       name: 'DBMS',
@@ -121,16 +130,8 @@ const Sidebar = ({
             }
           }
         ]
-      : []),
-    {
-      name: 'Guides',
-      title: '功能指引',
-      icon: function GuideDrawerIconComp(isOpen: boolean): JSX.Element {
-        return <GuideDrawerIcon isOpen={isOpen} />
-      },
-      content: GuideDrawer
-    }
-  ].filter(({ name }) => ['DBMS'].includes(name))
+      : [])
+  ].filter(({ name }) => ['Guides', 'DBMS'].includes(name))
 
   const bottomNavItems: NavItem[] = [
     {
@@ -172,7 +173,7 @@ const Sidebar = ({
       },
       content: AboutDrawer
     }
-  ].filter(({ name }) => ['Settings', 'About'].includes(name)) // TODO
+  ].filter(({ name }) => ['Settings', 'About'].includes(name))
 
   return (
     <TabNavigation

@@ -291,7 +291,7 @@ export function MainEditor({
                   context: '!suggestWidgetVisible && !findWidgetVisible'
                 }
               }}
-              useDb={'PKU'}
+              useDb={'TELECOM'}
               sendCypherQuery={(text: string) =>
                 new Promise((res, rej) =>
                   bus.self(

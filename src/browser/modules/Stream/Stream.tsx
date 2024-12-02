@@ -30,11 +30,16 @@ import {
 } from 'shared/modules/connections/connectionsDuck'
 import { Frame, FrameStack, getFrames } from 'shared/modules/frames/framesDuck'
 import { getScrollToTop } from 'shared/modules/settings/settingsDuck'
+import styled from 'styled-components'
+import { Link } from 'project-root/src/browser/modules/DBMSInfo/styled'
+import { executeCommand } from 'project-root/src/shared/modules/commands/commandsDuck'
+import { withBus } from 'react-suber'
 
 type StreamProps = {
   frames: FrameStack[]
   activeConnectionData: Connection | null
   shouldScrollToTop: boolean
+  exec: (cmd: string) => void
 }
 
 export interface BaseFrameProps {
@@ -73,10 +78,28 @@ function Stream(props: StreamProps): JSX.Element {
           />
         </AnimationContainer>
       ))}
+      {props.frames.length === 0 && (
+        <CenteredPrompt>
+          <div>
+            <span style={{ marginRight: '10px' }}>查看本体模型请点击</span>
+            <Link onClick={() => props.exec(':ont')}>:ont</Link>
+          </div>
+          <div>推荐栏集成在本体模型窗口中</div>
+          <div>节点搜索请点击左侧操作指引栏</div>
+        </CenteredPrompt>
+      )}
       <Padding />
     </StyledStream>
   )
 }
+
+const CenteredPrompt = styled.div`
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 16px;
+`
 
 const mapStateToProps = (state: GlobalState) => ({
   frames: getFrames(state),
@@ -84,4 +107,15 @@ const mapStateToProps = (state: GlobalState) => ({
   shouldScrollToTop: getScrollToTop(state)
 })
 
-export default connect(mapStateToProps)(memo(Stream))
+const mapDispatchToProps = (_dispatch: any, ownProps: any) => {
+  return {
+    exec: (cmd: string) => {
+      const action = executeCommand(cmd)
+      ownProps.bus.send(action.type, action)
+    }
+  }
+}
+
+export default withBus(
+  connect(mapStateToProps, mapDispatchToProps)(memo(Stream))
+)
